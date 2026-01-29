@@ -1,0 +1,40 @@
+  <script src="https://cdn.tailwindcss.com"></script>
+
+<body class="bg-gray-100">
+
+    <nav class="bg-indigo-600 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+
+                <!-- Logo / Title -->
+                <h1 class="text-white text-xl font-bold">
+                    Attendance System
+                </h1>
+
+                <!-- Navigation Links -->
+                <div class="space-x-6">
+                    <a href="{% url 'students' %}"
+                       class="text-white font-medium hover:text-yellow-300 transition">
+                        Students
+                    </a>
+
+                    <a href="{% url 'mark_attendance' %}"
+                       class="text-white font-medium hover:text-yellow-300 transition">
+                        Mark
+                    </a>
+
+                    <a href="{% url 'attendance_list' %}"
+                       class="text-white font-medium hover:text-yellow-300 transition">
+                        Records
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <main class="py-8">
+        {% block content %}{% endblock %}
+    </main>
+
+</body>

@@ -1,0 +1,65 @@
+{% extends 'attendance/base.html' %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto mt-10 px-4">
+
+    <h2 class="text-3xl font-bold text-center text-indigo-600 mb-6">
+        Student Records
+    </h2>
+
+    <!-- Add Student Form -->
+    <form method="post" class="bg-white shadow-lg rounded-xl p-6 mb-8">
+        {% csrf_token %}
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <input
+                type="text"
+                name="name"
+                placeholder="Student Name"
+                required
+                class="border border-gray-300 rounded-lg px-4 py-2
+                       focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+
+            <input
+                type="text"
+                name="roll"
+                placeholder="Roll No"
+                required
+                class="border border-gray-300 rounded-lg px-4 py-2
+                       focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+        </div>
+
+        <div class="text-center">
+            <button
+                type="submit"
+                class="px-6 py-2 text-white font-semibold rounded-lg
+                       bg-indigo-600 hover:bg-indigo-700 transition shadow-md"
+            >
+                Add Student
+            </button>
+        </div>
+    </form>
+
+    <!-- Student List -->
+    <div class="space-y-3">
+        {% for s in students %}
+        <div class="flex justify-between items-center p-4 rounded-lg shadow-sm
+                    bg-gray-50 hover:bg-indigo-50 transition">
+            <span class="text-lg font-medium text-gray-800">
+                {{ s.name }}
+            </span>
+            <span class="text-sm font-semibold text-indigo-600">
+                Roll No: {{ s.roll_no }}
+            </span>
+        </div>
+        {% empty %}
+        <p class="text-center text-gray-500">
+            No students added yet
+        </p>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
